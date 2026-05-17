@@ -66,13 +66,13 @@ export const card = {
   manifest,
 
   /**
-   * Strict shape check on the rendered model. The registry runs this after
-   * fetch to confirm what the lens returned matches its declared `extracts`.
+   * Pre-fetch validation: given a payload + sourceUrl, can this lens handle it?
+   * We accept anything where we can extract a package name from the npm URL.
+   * The payload itself is unused — npm URLs encode everything we need.
    */
-  validate(model) {
-    return !!model
-      && typeof model.name === 'string' && model.name.length > 0
-      && typeof model.version === 'string';
+  validate(_payload, sourceUrl) {
+    if (!sourceUrl) return false;
+    return packageNameFromUrl(sourceUrl) !== null;
   },
 
   /**

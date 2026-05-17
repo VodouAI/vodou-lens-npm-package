@@ -1,0 +1,33 @@
+{
+  "type": "npm.package",
+  "version": 1,
+  "motive": "Show an npm package summary: latest version, description, license, weekly downloads, dependency count, and homepage — pulled live from the npm registry.",
+  "url_patterns": [
+    "npmjs.com/package/**",
+    "www.npmjs.com/package/**",
+    "*.npmjs.com/package/**"
+  ],
+  "ttl_seconds": 21600,
+  "requires": {
+    "network_domains": ["registry.npmjs.org", "api.npmjs.org"],
+    "runs_js": false,
+    "paths": ["cheerio"],
+    "cookie_scope": "ephemeral"
+  },
+  "icon": "📦",
+  "category": "dev",
+  "author": "@vodou",
+  "license": "MIT",
+  "extracts": [
+    "name",
+    "version",
+    "description",
+    "license",
+    "author",
+    "homepage",
+    "repository",
+    "keywords",
+    "dependency_count",
+    "weekly_downloads"
+  ]
+}
